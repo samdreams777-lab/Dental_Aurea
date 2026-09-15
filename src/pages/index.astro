@@ -25,12 +25,6 @@ import { getRelativePath } from '../utils/path';
         class="w-full h-full object-cover object-[center_30%]"
       >
         <source src={getRelativePath("/assets/aurea/hero/hero-video.mp4")} type="video/mp4" />
-        <!-- Fallback static image -->
-        <img
-          src={getRelativePath("/assets/aurea/hero/hero-video-poster.jpg")}
-          alt="AUREA Radiant Smile Health and Confidence"
-          class="w-full h-full object-cover object-[center_30%]"
-        />
       </video>
 
       <!-- Soft lower gradient (bottom 55% only) for crisp typographic legibility without touching the face -->
@@ -111,41 +105,45 @@ import { getRelativePath } from '../utils/path';
     </div>
 
   </div>
-</Layout>
 
-<script>
-  function setupHeroVideo() {
-    const video = document.getElementById('hero-video') as HTMLVideoElement | null;
-    if (!video) return;
-
-    // Strict WebKit / iOS Safari property locking
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
-
-    function safePlay() {
+  <script>
+    function setupHeroVideo() {
+      const video = document.getElementById('hero-video') as HTMLVideoElement | null;
       if (!video) return;
-      if (video.paused) {
-        const promise = video.play();
-        if (promise !== undefined) {
-          promise.catch((err) => {
-            console.info('Hero video autoplay state handled:', err);
-          });
+
+      // Strict WebKit / iOS Safari property locking
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+
+      function safePlay() {
+        if (!video) return;
+        if (video.paused) {
+          const promise = video.play();
+          if (promise !== undefined) {
+            promise.catch((err) => {
+              console.info('[Hero Video] Autoplay state:', err);
+            });
+          }
         }
       }
+
+      // Try playing immediately
+      safePlay();
+
+      // Secondary triggers for WebKit media readiness
+      video.addEventListener('canplay', safePlay, { once: true });
+      video.addEventListener('loadedmetadata', safePlay, { once: true });
+      video.addEventListener('loadeddata', safePlay, { once: true });
     }
 
-    // Try playing immediately
-    safePlay();
-
-    // Secondary triggers for WebKit media readiness
-    video.addEventListener('canplay', safePlay, { once: true });
-    video.addEventListener('loadedmetadata', safePlay, { once: true });
-  }
-
-  setupHeroVideo();
-  document.addEventListener('astro:page-load', setupHeroVideo);
-</script>
+    setupHeroVideo();
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupHeroVideo, { once: true });
+    }
+    document.addEventListener('astro:page-load', setupHeroVideo);
+  </script>
+</Layout>
