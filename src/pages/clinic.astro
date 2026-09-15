@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { translations } from '../i18n/translations';
+---
+
+<Layout
+  title="The Architectural Sanctuary — AUREA Private Institute"
+  description="Explore the tranquil coastal architecture of AUREA in Da Nang, Vietnam. Designed with natural travertine, laminar airflow suites, and acoustic serenity."
+>
+  <!-- Hero -->
+  <section class="relative min-h-[65vh] flex items-end pb-20 border-b border-stone-300 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/assets/aurea/clinic/clinic-exterior.jpg"
+        alt="AUREA Coastal Institute Architecture"
+        class="w-full h-full object-cover object-center brightness-[0.92] contrast-[1.04]"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-ivory-50 via-ivory-50/50 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full space-y-4">
+      <div class="inline-flex items-center space-x-2 bg-ivory-50/90 backdrop-blur-sm px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-champagne-700 font-sans font-medium">
+        <span data-i18n="nav.locationNote">Sanctuary</span>
+      </div>
+      <h1 data-i18n="clinicPage.heroTitle" class="font-serif text-4xl md:text-6xl lg:text-7xl text-charcoal-900 font-light leading-[1.1] max-w-4xl">
+        {translations.vi.clinicPage.heroTitle}
+      </h1>
+      <p data-i18n="clinicPage.quote" class="font-serif text-xl md:text-2xl text-stone-600 font-light italic max-w-2xl">
+        "{translations.vi.clinicPage.quote}"
+      </p>
+    </div>
+  </section>
+
+  <!-- Architectural Narrative -->
+  <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="space-y-2">
+            <div data-i18n="clinicPage.conceptBadge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+              {translations.vi.clinicPage.conceptBadge}
+            </div>
+            <h2 data-i18n="clinicPage.conceptTitle" class="font-serif text-3xl md:text-4xl text-charcoal-900 font-light">
+              {translations.vi.clinicPage.conceptTitle}
+            </h2>
+          </div>
+          <div class="text-sm md:text-base text-stone-700 font-light font-sans leading-relaxed space-y-4">
+            <p>
+              Chúng tôi kết hợp chất liệu đá travertine Ý ấm áp, vải lanh tự nhiên và ánh sáng ban ngày gián tiếp. Mỗi phòng tư vấn đều được xử lý âm học với sàn nổi cách âm hoàn toàn, loại bỏ triệt để tiếng ồn lâm sàng.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="relative aspect-[4/3] overflow-hidden bg-stone-200 border border-stone-300">
+            <img
+              src="/assets/aurea/clinic/clinic-reception.jpg"
+              alt="Warm travertine reception lounge"
+              class="w-full h-full object-cover img-editorial-scale"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery of Spaces -->
+  <section class="py-24 md:py-36 bg-stone-100/40 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="space-y-4">
+          <div class="relative aspect-[4/3] overflow-hidden bg-stone-200">
+            <img src="/assets/aurea/clinic/clinic-lounge.jpg" alt="VIP Private Lounge" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+          <h3 data-i18n="clinicPage.loungeTitle" class="font-serif text-2xl text-charcoal-900 font-light">{translations.vi.clinicPage.loungeTitle}</h3>
+          <p data-i18n="clinicPage.loungeDesc" class="text-xs text-stone-600 font-sans font-light leading-relaxed">
+            {translations.vi.clinicPage.loungeDesc}
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="relative aspect-[4/3] overflow-hidden bg-stone-200">
+            <img src="/assets/aurea/clinic/clinic-suite.jpg" alt="Operatory Sanctuary" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+          <h3 data-i18n="clinicPage.sanctuaryTitle" class="font-serif text-2xl text-charcoal-900 font-light">{translations.vi.clinicPage.sanctuaryTitle}</h3>
+          <p data-i18n="clinicPage.sanctuaryDesc" class="text-xs text-stone-600 font-sans font-light leading-relaxed">
+            {translations.vi.clinicPage.sanctuaryDesc}
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="relative aspect-[4/3] overflow-hidden bg-stone-200">
+            <img src="/assets/aurea/clinic/clinic-corridor.jpg" alt="Architectural Gallery" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+          <h3 data-i18n="clinicPage.galleryTitle" class="font-serif text-2xl text-charcoal-900 font-light">{translations.vi.clinicPage.galleryTitle}</h3>
+          <p data-i18n="clinicPage.galleryDesc" class="text-xs text-stone-600 font-sans font-light leading-relaxed">
+            {translations.vi.clinicPage.galleryDesc}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Concierge Row -->
+  <section class="py-24 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <h2 data-i18n="clinicPage.whyTitle" class="font-serif text-3xl md:text-5xl text-charcoal-900 font-light">
+            {translations.vi.clinicPage.whyTitle}
+          </h2>
+          <p data-i18n="clinicPage.whyDesc" class="text-sm md:text-base text-stone-700 font-light font-sans leading-relaxed">
+            {translations.vi.clinicPage.whyDesc}
+          </p>
+          <div class="pt-2 text-xs font-sans text-stone-600 space-y-2">
+            <div data-i18n="footer.protocolDesc">• {translations.vi.footer.protocolDesc}</div>
+          </div>
+        </div>
+
+        <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
+          <img
+            src="/assets/aurea/editorial/editorial-water-calm.jpg"
+            alt="Da Nang Coastal Water"
+            class="w-full h-full object-cover img-editorial-scale"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

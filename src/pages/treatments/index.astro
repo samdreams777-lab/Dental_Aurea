@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TreatmentCard from '../../components/TreatmentCard.astro';
+import { treatments } from '../../data/treatments';
+import { translations } from '../../i18n/translations';
+---
+
+<Layout
+  title="Clinical Disciplines — AUREA Private Institute"
+  description="Explore our specialized disciplines in biological implantology, bespoke smile architecture, master ceramic veneers, and regenerative facial aesthetics."
+>
+  <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-3xl space-y-6">
+        <div data-i18n="treatmentsPage.badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+          {translations.vi.treatmentsPage.badge}
+        </div>
+        <h1 data-i18n="treatmentsPage.title" class="font-serif text-4xl md:text-6xl text-charcoal-900 font-light leading-[1.1]">
+          {translations.vi.treatmentsPage.title}
+        </h1>
+        <p data-i18n="treatmentsPage.desc" class="text-sm md:text-base text-stone-600 font-sans font-light leading-relaxed">
+          {translations.vi.treatmentsPage.desc}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-36 bg-stone-100/40 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {treatments.map((t) => (
+          <TreatmentCard
+            id={t.id}
+            title={t.title}
+            category={t.category}
+            tagline={t.tagline}
+            heroImage={t.heroImage}
+            slug={t.slug}
+            indications={t.indications}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

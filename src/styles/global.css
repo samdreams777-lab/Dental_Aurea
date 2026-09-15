@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Contract — Style Reference Tokens */
+    --color-pure-white: #ffffff;
+    --color-absolute-black: #000000;
+    --color-hairline-gray: #e5e7eb;
+    --color-stone-gray: #6b7280;
+    --color-ash: #b3b3b3;
+    --color-quartz: #bbbbbb;
+    --color-signal-blue: #2563eb;
+
+    /* Typography — Font Families */
+    --font-plain: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Typography — Scale */
+    --text-body: 16px;
+    --leading-body: 1.56;
+    --text-subheading: 18px;
+    --leading-subheading: 1.5;
+    --text-heading-sm: 24px;
+    --leading-heading-sm: 1.25;
+    --tracking-heading-sm: -0.05px;
+    --text-heading: 30px;
+    --leading-heading: 1.13;
+    --tracking-heading: -0.75px;
+    --text-heading-lg: 50px;
+    --leading-heading-lg: 1.08;
+    --tracking-heading-lg: -2px;
+    --text-display: 100px;
+    --leading-display: 1;
+    --tracking-display: -5px;
+
+    /* Typography — Weights */
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
+    /* Spacing */
+    --spacing-unit: 4px;
+    --spacing-4: 4px;
+    --spacing-8: 8px;
+    --spacing-12: 12px;
+    --spacing-16: 16px;
+    --spacing-20: 20px;
+    --spacing-24: 24px;
+    --spacing-32: 32px;
+    --spacing-36: 36px;
+    --spacing-40: 40px;
+    --spacing-48: 48px;
+    --spacing-100: 100px;
+
+    /* Layout */
+    --page-max-width: 1440px;
+    --section-gap: 64-80px;
+    --card-padding: 24-32px;
+    --element-gap: 8-12px;
+
+    /* Border Radius */
+    --radius-sm: 2px;
+    --radius-cards: 0px;
+    --radius-images: 0px;
+    --radius-inputs: 2px;
+    --radius-buttons: 0px;
+
+    /* Surfaces */
+    --surface-white-canvas: #ffffff;
+    --surface-inverted-black: #000000;
+  }
+
+  html {
+    background-color: var(--color-pure-white);
+    color: var(--color-absolute-black);
+    font-family: var(--font-plain);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-absolute-black);
+    color: var(--color-pure-white);
+  }
+
+  /* Universal Swiss-Grid Rules */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-plain);
+    color: var(--color-absolute-black);
+  }
+
+  /* Inputs have the only 2px radius in the system */
+  input, textarea, select {
+    border-radius: 2px !important;
+    border: 1px solid var(--color-hairline-gray);
+    background-color: #ffffff;
+    color: var(--color-absolute-black);
+  }
+
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--color-absolute-black) !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Zero elevation, zero pill buttons */
+  button, .btn {
+    border-radius: 0px;
+  }
+}
+
+@layer components {
+  /* Contract Ghost Link: Plain 16px weight 500, #000000 text with a 1px #000000 underline. Hover shifts to #2563eb */
+  .ghost-link {
+    font-family: var(--font-plain);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-absolute-black);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-absolute-black);
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .ghost-link:hover {
+    color: var(--color-signal-blue);
+    text-decoration-color: var(--color-signal-blue);
+  }
+
+  /* Contract Nav Link: Plain 16px weight 400 #000000 with 1px #e5e7eb underline. Hover shifts to #2563eb */
+  .contract-nav-link {
+    font-family: var(--font-plain);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-absolute-black);
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--color-hairline-gray);
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  }
+
+  .contract-nav-link:hover, .contract-nav-link.active {
+    color: var(--color-signal-blue);
+    text-decoration-color: var(--color-signal-blue);
+  }
+
+  /* Inverted Black Band: Full-width #000000 background, #ffffff text, 64–80px vertical padding */
+  .inverted-band {
+    background-color: var(--color-absolute-black);
+    color: var(--color-pure-white);
+  }
+
+  /* Hairline divider */
+  .hairline-b {
+    border-bottom: 1px solid var(--color-hairline-gray);
+  }
+  .hairline-t {
+    border-top: 1px solid var(--color-hairline-gray);
+  }
+  .hairline-r {
+    border-right: 1px solid var(--color-hairline-gray);
+  }
+  .hairline-l {
+    border-left: 1px solid var(--color-hairline-gray);
+  }
+  .hairline-all {
+    border: 1px solid var(--color-hairline-gray);
+  }
+}
+
+/* Subtle image scale effect */
+.img-editorial-scale {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .img-editorial-scale {
+  transform: scale(1.02);
+}
+
+/* Custom minimal hairline scrollbar for subpages */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-pure-white);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-hairline-gray);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone-gray);
+}

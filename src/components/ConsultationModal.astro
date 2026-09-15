@@ -1,0 +1,208 @@
+---
+import { translations } from '../i18n/translations';
+---
+
+<dialog
+  id="consultation-dialog"
+  class="backdrop:bg-[#000000]/60 backdrop:backdrop-blur-xs bg-transparent p-0 m-auto max-w-2xl w-full focus:outline-none"
+>
+  <div class="bg-[#ffffff] rounded-none border border-[#e5e7eb] p-8 md:p-12 relative max-h-[92vh] overflow-y-auto font-plain text-[#000000]">
+    
+    <!-- Close button (0px radius) -->
+    <button
+      id="close-consultation-btn"
+      aria-label="Close modal"
+      class="absolute top-6 right-6 text-[#6b7280] hover:text-[#000000] transition-colors p-1 cursor-pointer"
+    >
+      <svg class="w-6 h-6 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="square" stroke-linejoin="miter" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Header -->
+    <div class="space-y-2.5 mb-8">
+      <div data-i18n="modal.badge" class="text-xs uppercase tracking-[0.2em] text-[#6b7280] font-plain font-medium">
+        {translations.vi.modal.badge}
+      </div>
+      <h3 data-i18n="modal.title" class="font-plain text-2xl md:text-3xl font-light tracking-[-0.03em] text-[#000000]">
+        {translations.vi.modal.title}
+      </h3>
+      <p data-i18n="modal.subtitle" class="text-xs md:text-sm text-[#6b7280] font-plain font-normal leading-relaxed">
+        {translations.vi.modal.subtitle}
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form id="consultation-form" class="space-y-5 font-plain">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label data-i18n="modal.nameLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+            {translations.vi.modal.nameLabel}
+          </label>
+          <input
+            type="text"
+            required
+            maxlength="100"
+            data-i18n="modal.namePlaceholder"
+            placeholder={translations.vi.modal.namePlaceholder}
+            class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors"
+          />
+        </div>
+
+        <div>
+          <label data-i18n="modal.phoneLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+            {translations.vi.modal.phoneLabel}
+          </label>
+          <input
+            type="tel"
+            required
+            maxlength="30"
+            data-i18n="modal.phonePlaceholder"
+            placeholder={translations.vi.modal.phonePlaceholder}
+            class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label data-i18n="modal.commLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+            {translations.vi.modal.commLabel}
+          </label>
+          <select class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors">
+            <option value="zalo">Zalo Concierge</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="private-call">Direct Call</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+
+        <div>
+          <label data-i18n="modal.langLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+            {translations.vi.modal.langLabel}
+          </label>
+          <select class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="kr">한국어</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label data-i18n="modal.disciplineLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+          {translations.vi.modal.disciplineLabel}
+        </label>
+        <select class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors">
+          <option value="dental-implants">Cấy Ghép Implant & Phục Hồi Sinh Học</option>
+          <option value="smile-design">Kiến Trúc Nụ Cười Kỹ Thuật Số Độc Bản</option>
+          <option value="veneers">Veneer Sứ Thủy Tinh Feldspathic</option>
+          <option value="full-rehab">Tái Cấu Trúc Khớp Cắn Toàn Diện</option>
+          <option value="orthodontics">Chỉnh Nha Vô Hình / Mắc Cài Mặt Lưỡi</option>
+          <option value="aesthetics">Thẩm Mỹ Khuôn Mặt & Y Học Tái Tạo</option>
+          <option value="general">Tư Vấn Lâm Sàng Đa Chuyên Khoa</option>
+        </select>
+      </div>
+
+      <div>
+        <label data-i18n="modal.notesLabel" class="block text-xs uppercase tracking-wider text-[#000000] font-medium mb-1.5">
+          {translations.vi.modal.notesLabel}
+        </label>
+        <textarea
+          rows="3"
+          maxlength="1000"
+          data-i18n="modal.notesPlaceholder"
+          placeholder={translations.vi.modal.notesPlaceholder}
+          class="w-full bg-[#ffffff] rounded-[2px] border border-[#6b7280] px-3.5 py-2.5 text-sm text-[#000000] focus:outline-none focus:border-[#000000] transition-colors"
+        ></textarea>
+      </div>
+
+      <div class="pt-2 flex items-center justify-between">
+        <button
+          type="submit"
+          id="submit-consultation-btn"
+          data-i18n="modal.submitBtn"
+          class="px-8 py-3.5 bg-[#000000] text-[#ffffff] text-xs uppercase tracking-widest font-plain font-medium hover:bg-[#2563eb] transition-colors duration-200 cursor-pointer disabled:opacity-50"
+        >
+          {translations.vi.modal.submitBtn} →
+        </button>
+        <button
+          type="button"
+          data-i18n="modal.cancelBtn"
+          onclick="document.getElementById('consultation-dialog').close()"
+          class="ghost-link text-xs uppercase tracking-wider text-[#6b7280] cursor-pointer"
+        >
+          {translations.vi.modal.cancelBtn}
+        </button>
+      </div>
+    </form>
+
+    <!-- Success state -->
+    <div id="consultation-success" class="hidden text-center py-10 space-y-4 font-plain">
+      <div class="w-10 h-10 mx-auto bg-[#000000] text-[#ffffff] flex items-center justify-center">
+        <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="square" stroke-linejoin="miter" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+      </div>
+      <h4 data-i18n="modal.confirmedTitle" class="font-plain text-xl text-[#000000] font-medium">{translations.vi.modal.confirmedTitle}</h4>
+      <p data-i18n="modal.confirmedDesc" class="text-xs text-[#6b7280] max-w-sm mx-auto leading-relaxed">
+        {translations.vi.modal.confirmedDesc}
+      </p>
+      <div class="pt-4">
+        <button
+          type="button"
+          data-i18n="modal.closeBtn"
+          onclick="document.getElementById('consultation-dialog').close()"
+          class="ghost-link text-xs uppercase tracking-widest cursor-pointer"
+        >
+          {translations.vi.modal.closeBtn}
+        </button>
+      </div>
+    </div>
+
+  </div>
+</dialog>
+
+<script>
+  function initDialog() {
+    const dialog = document.getElementById('consultation-dialog') as HTMLDialogElement | null;
+    const closeBtn = document.getElementById('close-consultation-btn');
+    const form = document.getElementById('consultation-form') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('submit-consultation-btn') as HTMLButtonElement | null;
+    const success = document.getElementById('consultation-success');
+    if (!dialog) return;
+
+    window.addEventListener('open-consultation-modal', () => {
+      if (form) {
+        form.reset();
+        form.classList.remove('hidden');
+      }
+      if (submitBtn) submitBtn.disabled = false;
+      if (success) success.classList.add('hidden');
+      dialog.showModal();
+    });
+
+    closeBtn?.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('click', (e) => {
+      const rect = dialog.getBoundingClientRect();
+      const inDialog =
+        rect.top <= e.clientY &&
+        e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX &&
+        e.clientX <= rect.left + rect.width;
+      if (!inDialog) dialog.close();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (submitBtn) submitBtn.disabled = true;
+      form.classList.add('hidden');
+      if (success) success.classList.remove('hidden');
+    });
+  }
+
+  initDialog();
+  document.addEventListener('astro:page-load', initDialog);
+</script>

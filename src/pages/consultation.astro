@@ -1,0 +1,174 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+---
+
+<Layout
+  title="Begin Your Private Consultation — AUREA Private Institute"
+  description="Arrange a private diagnostic consultation with the medical directors of AUREA in Da Nang, Vietnam. Dedicated VIP concierge assistance for international and regional patients."
+>
+  <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-4xl mx-auto px-6 md:px-12">
+      
+      <div class="space-y-6 text-center max-w-2xl mx-auto mb-16">
+        <div class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+          Private Medical Concierge
+        </div>
+        <h1 class="font-serif text-4xl md:text-6xl text-charcoal-900 font-light leading-[1.1]">
+          Begin your private consultation.
+        </h1>
+        <p class="text-sm md:text-base text-stone-600 font-sans font-light leading-relaxed">
+          Every consultation at AUREA is scheduled with a 90-minute diagnostic window. We accept a strictly limited number of new patients each month to preserve unhurried clinical rigor.
+        </p>
+      </div>
+
+      <!-- Main Concierge Booking Card -->
+      <div class="border border-stone-300 bg-stone-100/30 p-8 md:p-14 shadow-sm space-y-8">
+        <form id="page-consultation-form" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+                Full Legal Name *
+              </label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. Eleanor Vance"
+                class="w-full bg-ivory-50 border border-stone-300 px-4 py-3.5 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors"
+              />
+            </div>
+
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+                Direct Contact Number *
+              </label>
+              <input
+                type="tel"
+                required
+                placeholder="+84 90 000 0000"
+                class="w-full bg-ivory-50 border border-stone-300 px-4 py-3.5 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+                Preferred Messaging Channel
+              </label>
+              <select class="w-full bg-ivory-50 border border-stone-300 px-4 py-3.5 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors">
+                <option value="zalo">Zalo Direct Concierge</option>
+                <option value="whatsapp">WhatsApp Business</option>
+                <option value="phone">Private Direct Phone Call</option>
+                <option value="email">Encrypted Email Communication</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+                Preferred Consultation Language
+              </label>
+              <select class="w-full bg-ivory-50 border border-stone-300 px-4 py-3.5 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors">
+                <option value="en">English (Fluent Clinical Faculty)</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="fr">Français</option>
+                <option value="kr">한국어</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+              Clinical Discipline of Primary Interest *
+            </label>
+            <select class="w-full bg-ivory-50 border border-stone-300 px-4 py-3.5 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors">
+              <option value="dental-implants">Dental Implants & Biological Reconstruction</option>
+              <option value="smile-design">Bespoke Smile Design & 3D Simulation</option>
+              <option value="veneers">Master Feldspathic Porcelain Veneers</option>
+              <option value="full-rehab">Full Mouth Occlusal Rehabilitation</option>
+              <option value="orthodontics">Discrete Lingual & Clear Aligners</option>
+              <option value="aesthetics">Facial Aesthetics & Regenerative Medicine</option>
+              <option value="general">Comprehensive Diagnostic Overview</option>
+              <option value="not-sure">Not sure yet — I would like an open specialist evaluation</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] uppercase tracking-wider text-charcoal-800 font-sans mb-2">
+              Clinical Context or Personal Expectations
+            </label>
+            <textarea
+              rows="4"
+              placeholder="Please share any existing dental conditions, prior treatments, aesthetic preferences, or travel scheduling windows..."
+              class="w-full bg-ivory-50 border border-stone-300 px-4 py-3 text-sm text-charcoal-900 focus:outline-none focus:border-champagne-500 transition-colors"
+            ></textarea>
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="submit"
+              class="w-full py-4 bg-charcoal-900 text-ivory-50 text-xs uppercase tracking-[0.22em] font-sans hover:bg-champagne-600 transition-colors duration-300"
+            >
+              Submit Confidential Consultation Request →
+            </button>
+          </div>
+        </form>
+
+        <div id="page-success" class="hidden text-center py-12 space-y-4">
+          <div class="w-12 h-12 mx-auto rounded-full bg-champagne-500/20 text-champagne-600 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <h3 class="font-serif text-3xl text-charcoal-900 font-light">Inquiry Successfully Registered</h3>
+          <p class="text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
+            Our Senior Medical Concierge in Da Nang will contact your designated channel within 2 business hours to review your request and confirm dates.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Confidentiality & International Concierge Protocol -->
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-sans text-stone-600 border-t border-stone-300 pt-12">
+        <div class="space-y-2">
+          <div class="text-[10px] uppercase tracking-widest text-champagne-600 font-medium">Strict Discretion</div>
+          <p class="font-light leading-relaxed">
+            All records, photographic archives, and clinical notes are preserved in private encrypted storage conforming to international privacy standards.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="text-[10px] uppercase tracking-widest text-champagne-600 font-medium">Travel & Valet Concierge</div>
+          <p class="font-light leading-relaxed">
+            For international and domestic arrivals, our institute coordinates private airport chauffeur transfers and preferred arrangements with coastal Da Nang resorts.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="text-[10px] uppercase tracking-widest text-champagne-600 font-medium">Unrushed Schedule</div>
+          <p class="font-light leading-relaxed">
+            We never double-book or overlap procedures. Your appointment is reserved exclusively for you with our senior medical faculty.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function setupPageForm() {
+    const form = document.getElementById('page-consultation-form');
+    const success = document.getElementById('page-success');
+    if (!form || !success) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    });
+  }
+
+  setupPageForm();
+  document.addEventListener('astro:page-load', setupPageForm);
+</script>

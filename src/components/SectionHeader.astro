@@ -1,0 +1,41 @@
+﻿---
+interface Props {
+  index?: string;
+  title: string;
+  subtitle?: string;
+  centered?: boolean;
+  dark?: boolean;
+  class?: string;
+}
+
+const {
+  index,
+  title,
+  subtitle,
+  centered = false,
+  dark = false,
+  class: className = ""
+} = Astro.props;
+---
+
+<div class={`space-y-4 ${centered ? 'text-center mx-auto max-w-3xl' : 'max-w-2xl'} ${className}`}>
+  {index && (
+    <div class={`text-[11px] uppercase tracking-[0.25em] font-sans font-medium ${
+      dark ? 'text-champagne-400' : 'text-champagne-600'
+    }`}>
+      {index}
+    </div>
+  )}
+  <h2 class={`font-serif text-3xl md:text-5xl lg:text-5xl tracking-[-0.015em] font-light leading-[1.15] ${
+    dark ? 'text-ivory-50' : 'text-charcoal-900'
+  }`}>
+    {title}
+  </h2>
+  {subtitle && (
+    <p class={`text-sm md:text-base font-sans font-light leading-relaxed ${
+      dark ? 'text-stone-400' : 'text-stone-600'
+    }`}>
+      {subtitle}
+    </p>
+  )}
+</div>

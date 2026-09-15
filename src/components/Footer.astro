@@ -1,0 +1,97 @@
+---
+import { translations } from '../i18n/translations';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[#000000] text-[#ffffff] pt-20 pb-16 border-t border-[#27272a] select-none">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-12">
+    
+    <!-- Top Architectural Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-[#27272a]">
+      
+      <!-- Brand Wordmark & Monograph Statement -->
+      <div class="lg:col-span-4 space-y-4">
+        <a href="/" class="inline-block group">
+          <span class="font-plain text-2xl tracking-[-0.03em] text-[#ffffff] uppercase font-semibold">
+            AUREA
+          </span>
+          <span data-i18n="footer.tagline" class="block text-[11px] uppercase tracking-wider text-[#b3b3b3] font-plain mt-1">
+            {translations.vi.footer.tagline}
+          </span>
+        </a>
+        <p data-i18n="footer.desc" class="text-[14px] font-plain text-[#b3b3b3] font-normal leading-relaxed max-w-sm">
+          {translations.vi.footer.desc}
+        </p>
+        <div data-i18n="footer.location" class="pt-2 text-xs font-plain text-[#6b7280] uppercase tracking-wider">
+          {translations.vi.footer.location}
+        </div>
+      </div>
+
+      <!-- Navigation Columns (Plain 14–15px with 1px hairlines) -->
+      <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-8">
+        
+        <!-- Disciplines -->
+        <div class="space-y-4">
+          <div data-i18n="footer.colDisciplines" class="text-xs uppercase tracking-wider text-[#ffffff] font-plain font-medium">
+            {translations.vi.footer.colDisciplines}
+          </div>
+          <ul class="space-y-2.5 text-[14px] font-plain text-[#b3b3b3]">
+            <li><a href="/treatments/dental-implants" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.treatments}</a></li>
+            <li><a href="/treatments/smile-design" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Kiến Trúc Nụ Cười</a></li>
+            <li><a href="/treatments/veneers" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Veneer Sứ Cao Cấp</a></li>
+            <li><a href="/treatments/full-mouth-rehabilitation" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Tái Cấu Trúc Khớp Cắn</a></li>
+            <li><a href="/treatments/orthodontics" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Chỉnh Nha Vô Hình</a></li>
+            <li><a href="/treatments/aesthetic-medicine" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Thẩm Mỹ Khuôn Mặt</a></li>
+          </ul>
+        </div>
+
+        <!-- The Institute -->
+        <div class="space-y-4">
+          <div data-i18n="footer.colInstitute" class="text-xs uppercase tracking-wider text-[#ffffff] font-plain font-medium">
+            {translations.vi.footer.colInstitute}
+          </div>
+          <ul class="space-y-2.5 text-[14px] font-plain text-[#b3b3b3]">
+            <li><a href="/doctors" data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.specialists}</a></li>
+            <li><a href="/clinic" data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.clinic}</a></li>
+            <li><a href="/technology" data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.technology}</a></li>
+            <li><a href="/patient-journey" data-i18n="nav.protocol" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.protocol}</a></li>
+            <li><a href="/results" data-i18n="nav.results" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.results}</a></li>
+            <li><a href="/journal" data-i18n="nav.journal" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.journal}</a></li>
+          </ul>
+        </div>
+
+        <!-- Private Protocol -->
+        <div class="col-span-2 md:col-span-1 space-y-4">
+          <div data-i18n="footer.colProtocol" class="text-xs uppercase tracking-wider text-[#ffffff] font-plain font-medium">
+            {translations.vi.footer.colProtocol}
+          </div>
+          <p data-i18n="footer.protocolDesc" class="text-[13px] font-plain text-[#b3b3b3] leading-relaxed">
+            {translations.vi.footer.protocolDesc}
+          </p>
+          <div class="pt-2">
+            <button
+              onclick="window.dispatchEvent(new CustomEvent('open-consultation-modal'))"
+              data-i18n="footer.cta"
+              class="ghost-link !text-[#ffffff] !decoration-[#ffffff] hover:!text-[#2563eb] hover:!decoration-[#2563eb] text-sm"
+            >
+              {translations.vi.footer.cta}
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Integrity & Disclaimer Row -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-[12px] font-plain text-[#6b7280] space-y-3 md:space-y-0">
+      <div data-i18n="footer.copyright">
+        © {year} {translations.vi.footer.copyright}
+      </div>
+      <div data-i18n="footer.disclaimer" class="max-w-xl text-center md:text-right text-[11px] text-[#6b7280] leading-relaxed">
+        {translations.vi.footer.disclaimer}
+      </div>
+    </div>
+
+  </div>
+</footer>

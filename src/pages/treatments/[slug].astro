@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { treatments, type Treatment } from '../../data/treatments';
+import { doctors } from '../../data/doctors';
+import { translations } from '../../i18n/translations';
+
+export function getStaticPaths() {
+  return treatments.map((treatment) => ({
+    params: { slug: treatment.slug },
+    props: { treatment },
+  }));
+}
+
+interface Props {
+  treatment: Treatment;
+}
+
+const { treatment } = Astro.props;
+const treatVi = translations.vi.treatments?.[treatment.id as keyof typeof translations.vi.treatments] || treatment;
+const doctor = doctors.find((d) => d.slug === treatment.doctorSlug);
+const docVi = doctor ? (translations.vi.doctors?.[doctor.id as keyof typeof translations.vi.doctors] || doctor) : null;
+---
+
+<Layout
+  title={`${treatVi.title} — AUREA Private Institute`}
+  description={treatVi.overview}
+  image={treatment.heroImage}
+>
+  <!-- 01 HERO -->
+  <section class="relative min-h-[65vh] flex items-end pb-20 border-b border-stone-300 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img
+        src={treatment.heroImage}
+        alt={treatment.title}
+        class="w-full h-full object-cover object-center brightness-[0.9] contrast-[1.05]"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-ivory-50 via-ivory-50/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full space-y-4">
+      <div class="inline-flex items-center space-x-2 bg-ivory-50/90 backdrop-blur-sm px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-champagne-700 font-sans font-medium">
+        <span data-i18n="nav.treatments">Dịch vụ</span>
+        <span>·</span>
+        <span data-i18n={`treatments.${treatment.id}.category`}>{treatVi.category}</span>
+      </div>
+      <h1 data-i18n={`treatments.${treatment.id}.title`} class="font-serif text-4xl md:text-6xl lg:text-7xl text-charcoal-900 font-light leading-[1.1] max-w-4xl">
+        {treatVi.title}
+      </h1>
+      <p data-i18n={`treatments.${treatment.id}.tagline`} class="font-serif text-xl md:text-2xl text-stone-600 font-light italic max-w-2xl">
+        "{treatVi.tagline}"
+      </p>
+    </div>
+  </section>
+
+  <!-- 02 OVERVIEW & APPROACH -->
+  <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        
+        <!-- Left: Clinical Approach -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="space-y-2">
+            <div data-i18n="philosophy.badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+              01 / Triết lý
+            </div>
+            <h2 data-i18n="philosophy.headline" class="font-serif text-3xl md:text-4xl text-charcoal-900 font-light">
+              Nha khoa, theo một tiêu chuẩn khác.
+            </h2>
+          </div>
+          <div class="prose prose-stone text-stone-700 font-light text-base md:text-lg leading-relaxed space-y-6">
+            <p data-i18n={`treatments.${treatment.id}.overview`}>{treatVi.overview}</p>
+            {treatVi.approach && <p data-i18n={`treatments.${treatment.id}.approach`}>{treatVi.approach}</p>}
+          </div>
+        </div>
+
+        <!-- Right: Indications & Eligibility -->
+        <div class="lg:col-span-5 space-y-8 lg:border-l lg:border-stone-200 lg:pl-12">
+          <!-- Lead Specialist Card -->
+          {doctor && docVi && (
+            <div class="p-6 border border-stone-300 bg-stone-100/50 space-y-4">
+              <div data-i18n="doctorsPage.badge" class="text-[10px] uppercase tracking-widest text-stone-500">Chuyên gia Đảm trách</div>
+              <div class="flex items-center space-x-4">
+                <img
+                  src={doctor.image}
+                  alt={doctor.name}
+                  class="w-16 h-16 rounded-full object-cover object-top border border-champagne-500/40"
+                />
+                <div>
+                  <div class="font-serif text-lg text-charcoal-900 font-medium">{doctor.name}</div>
+                  <div data-i18n={`doctors.${doctor.id}.role`} class="text-xs text-stone-500">{docVi.role}</div>
+                </div>
+              </div>
+              <a
+                href={`/doctors/${doctor.slug}`}
+                data-i18n="doctors.viewProfile"
+                class="inline-block text-xs uppercase tracking-wider text-champagne-700 hover:text-charcoal-900 transition-colors pt-2"
+              >
+                {translations.vi.doctors.viewProfile}
+              </a>
+            </div>
+          )}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 CTA BANNER -->
+  <section class="py-24 bg-charcoal-950 text-ivory-50 text-center">
+    <div class="max-w-3xl mx-auto px-6 space-y-6">
+      <div data-i18n="modal.badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-sans font-medium">
+        {translations.vi.modal.badge}
+      </div>
+      <h2 data-i18n="modal.title" class="font-serif text-3xl md:text-5xl font-light">
+        {translations.vi.modal.title}
+      </h2>
+      <p data-i18n="modal.subtitle" class="text-sm text-stone-400 font-sans font-light leading-relaxed">
+        {translations.vi.modal.subtitle}
+      </p>
+      <div class="pt-4">
+        <button
+          onclick="window.dispatchEvent(new CustomEvent('open-consultation-modal'))"
+          data-i18n="hero.ctaPrimary"
+          class="px-8 py-4 bg-champagne-500 text-charcoal-950 text-xs uppercase tracking-[0.22em] font-sans hover:bg-champagne-400 transition-all duration-300"
+        >
+          {translations.vi.hero.ctaPrimary} →
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>

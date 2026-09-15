@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { translations } from '../../i18n/translations';
+
+const artVi = translations.vi.journal['mathematics-of-natural-harmony'];
+---
+
+<Layout
+  title="The Mathematics of Natural Harmony: Golden Ratios vs. Organic Asymmetry — AUREA Journal"
+  description="Why the pursuit of mathematical perfection often creates unnatural dental aesthetics, and how master ceramists embrace biological micro-irregularities."
+  image="/assets/aurea/editorial/editorial-shadows.jpg"
+>
+  <article class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-3xl mx-auto px-6 md:px-12 space-y-12">
+      
+      <!-- Article Header -->
+      <div class="space-y-4 text-center">
+        <div data-i18n="journal.mathematics-of-natural-harmony.category" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+          {artVi.category}
+        </div>
+        <h1 data-i18n="journal.mathematics-of-natural-harmony.title" class="font-serif text-4xl md:text-6xl text-charcoal-900 font-light leading-[1.12]">
+          {artVi.title}
+        </h1>
+        <div data-i18n="journal.mathematics-of-natural-harmony.author" class="text-xs font-sans text-stone-500 pt-2">
+          {artVi.author}
+        </div>
+      </div>
+
+      <!-- Lead Image -->
+      <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
+        <img
+          src="/assets/aurea/editorial/editorial-shadows.jpg"
+          alt="Architectural shadows and light"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <!-- Prose Content -->
+      <div class="prose prose-stone text-stone-800 font-light text-base md:text-lg leading-relaxed space-y-6">
+        <p data-i18n="journal.mathematics-of-natural-harmony.excerpt" class="font-serif text-xl md:text-2xl text-charcoal-900 italic leading-relaxed">
+          "{artVi.excerpt}"
+        </p>
+
+        <h2 data-i18n="journal.mathematics-of-natural-harmony.section1" class="font-serif text-3xl text-charcoal-900 font-light pt-6">
+          {artVi.section1}
+        </h2>
+
+        <h2 data-i18n="journal.mathematics-of-natural-harmony.section2" class="font-serif text-3xl text-charcoal-900 font-light pt-6">
+          {artVi.section2}
+        </h2>
+      </div>
+
+      <!-- Author Bio Footer -->
+      <div class="pt-12 border-t border-stone-200 flex items-center space-x-6">
+        <img
+          src="/assets/aurea/doctors/dr-elena-vance.jpg"
+          alt="Dr. Elena Vance"
+          class="w-16 h-16 rounded-full object-cover object-top border border-champagne-500/40"
+        />
+        <div class="space-y-1">
+          <div data-i18n="doctors.dr-elena-vance.name" class="font-serif text-lg text-charcoal-900 font-medium">Dr. Elena Vance</div>
+          <div data-i18n="doctors.dr-elena-vance.role" class="text-xs text-stone-500 font-sans">
+            {translations.vi.doctors['dr-elena-vance'].role}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</Layout>

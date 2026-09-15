@@ -1,0 +1,65 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  id?: string;
+  name: string;
+  role: string;
+  specialty: string;
+  image: string;
+  slug: string;
+  quote: string;
+  scheduleLimit: string;
+}
+
+const { id = '', name, role, specialty, image, slug, quote, scheduleLimit } = Astro.props;
+
+const docKey = id || slug;
+const docVi = translations.vi.doctors?.[docKey as keyof typeof translations.vi.doctors] || { name, role, specialty, quote, scheduleLimit };
+---
+
+<div class="group flex flex-col border border-stone-300/80 bg-stone-100/30 hover:border-champagne-500/60 transition-all duration-500 overflow-hidden">
+  <!-- Portrait -->
+  <div class="relative aspect-[4/5] overflow-hidden bg-stone-200">
+    <img
+      src={image}
+      alt={name}
+      loading="lazy"
+      class="w-full h-full object-cover object-top img-editorial-scale"
+    />
+    <div class="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-charcoal-950/80 to-transparent text-ivory-50">
+      <div data-i18n={`doctors.${docKey}.specialty`} class="text-[10px] uppercase tracking-[0.22em] text-champagne-400 font-sans">
+        {docVi.specialty}
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6 md:p-8 flex flex-col justify-between flex-grow space-y-6">
+    <div class="space-y-3">
+      <h3 class="font-serif text-2xl md:text-3xl text-charcoal-900 font-light group-hover:text-champagne-700 transition-colors">
+        {name}
+      </h3>
+      <div data-i18n={`doctors.${docKey}.role`} class="text-xs uppercase tracking-wider text-stone-500 font-sans font-medium">
+        {docVi.role}
+      </div>
+      <p data-i18n={`doctors.${docKey}.quote`} class="text-xs md:text-sm font-sans text-stone-600 font-light italic leading-relaxed pt-2">
+        "{docVi.quote}"
+      </p>
+    </div>
+
+    <div class="pt-4 border-t border-stone-200/60 space-y-4">
+      <div class="text-[10px] uppercase tracking-wider text-stone-500 flex items-center space-x-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-champagne-500"></span>
+        <span data-i18n={`doctors.${docKey}.scheduleLimit`}>{docVi.scheduleLimit}</span>
+      </div>
+      <a
+        href={`/doctors/${slug}`}
+        data-i18n="doctors.viewProfile"
+        class="inline-block text-[11px] uppercase tracking-[0.2em] text-charcoal-900 font-sans font-medium hover:text-champagne-600 transition-colors"
+      >
+        {translations.vi.doctors.viewProfile}
+      </a>
+    </div>
+  </div>
+</div>

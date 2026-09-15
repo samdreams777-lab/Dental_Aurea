@@ -1,0 +1,136 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { translations } from '../i18n/translations';
+---
+
+<Layout
+  title="AUREA — Viện Y Khoa Nha Khoa & Thẩm Mỹ Tư Nhân · Đà Nẵng"
+  description="Độ chính xác chuẩn mực, khắc họa cho riêng bạn. Viện phục hình răng thẩm mỹ và y học tái tạo khuôn mặt biệt lập bên bờ biển Sơn Trà, Đà Nẵng."
+>
+  <!-- Full-Screen Hero Video Plate (Dominant, Not Split, 100% Screen) -->
+  <div class="relative w-full h-screen h-[100dvh] overflow-hidden flex flex-col justify-between select-none">
+    
+    <!-- Full-Bleed Video Background Plate (Carries 100% warmth & visual emotion) -->
+    <div class="absolute inset-0 z-0 bg-[#000000]">
+      <video
+        id="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="/assets/aurea/hero/hero-video-poster.jpg"
+        class="w-full h-full object-cover object-[center_30%]"
+      >
+        <source src="/assets/aurea/hero/hero-video.mp4" type="video/mp4" />
+        <!-- Fallback static image -->
+        <img
+          src="/assets/aurea/hero/hero-video-poster.jpg"
+          alt="AUREA Radiant Smile Health and Confidence"
+          class="w-full h-full object-cover object-[center_30%]"
+        />
+      </video>
+
+      <!-- Soft lower gradient (bottom 55% only) for crisp typographic legibility without touching the face -->
+      <div class="absolute inset-x-0 bottom-0 h-[60%] bg-gradient-to-t from-[#000000]/85 via-[#000000]/40 to-transparent pointer-events-none"></div>
+
+      <!-- Subtle top tint for header contrast -->
+      <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#000000]/45 to-transparent pointer-events-none"></div>
+
+      <!-- Plate Metadata Tag -->
+      <div data-i18n="hero.plate" class="absolute top-24 right-6 md:right-12 text-[10px] uppercase tracking-widest text-[#ffffff]/60 font-plain">
+        {translations.vi.hero.plate}
+      </div>
+    </div>
+
+    <!-- Upper visual breathing space: leaves the radiant smile completely unobstructed -->
+    <div class="relative z-10 flex-grow min-h-[30vh]"></div>
+
+    <!-- Lower Hero Typography Area: Editorial Swiss Monograph Layout -->
+    <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 pb-8 md:pb-12 text-[#ffffff]">
+      
+      <!-- Editorial Eyebrow -->
+      <div class="flex items-center space-x-3 text-xs uppercase tracking-[0.25em] font-plain text-[#ffffff]/90 font-medium mb-3">
+        <span class="w-1.5 h-1.5 bg-[#ffffff] inline-block"></span>
+        <span data-i18n="hero.eyebrow">
+          {translations.vi.hero.eyebrow}
+        </span>
+      </div>
+
+      <!-- Monumental Plain 300 Headline with Negative Tracking -->
+      <h1
+        data-i18n="hero.headline"
+        class="font-plain text-3xl sm:text-5xl md:text-6xl lg:text-[68px] font-light text-[#ffffff] tracking-[-0.04em] leading-[1.04] max-w-4xl drop-shadow-sm"
+      >
+        {translations.vi.hero.headline}
+      </h1>
+
+      <!-- Plain 400 Body Subtitle -->
+      <p
+        data-i18n="hero.subtitle"
+        class="font-plain text-sm sm:text-base md:text-lg text-[#ffffff]/85 font-normal leading-[1.6] max-w-2xl mt-4 drop-shadow-2xs"
+      >
+        {translations.vi.hero.subtitle}
+      </p>
+
+      <!-- Typographic Actions: Ghost Link with Hairline Underline -->
+      <div class="pt-6 flex flex-wrap items-center gap-6 text-[15px] font-plain">
+        <button
+          onclick="window.dispatchEvent(new CustomEvent('open-consultation-modal'))"
+          data-i18n="hero.ctaPrimary"
+          class="ghost-link !text-[#ffffff] !decoration-[#ffffff] hover:!text-[#2563eb] hover:!decoration-[#2563eb] text-[15px]"
+        >
+          {translations.vi.hero.ctaPrimary} →
+        </button>
+
+        <a
+          href="/clinic"
+          data-i18n="hero.ctaSecondary"
+          class="text-[14px] font-plain text-[#ffffff]/80 hover:text-[#ffffff] underline decoration-[#ffffff]/40 hover:decoration-[#ffffff] transition-colors"
+        >
+          {translations.vi.hero.ctaSecondary}
+        </a>
+      </div>
+
+      <!-- Bottom Architectural Status & Quick Section Index -->
+      <div class="mt-8 pt-4 border-t border-[#ffffff]/20 flex flex-col md:flex-row md:items-center justify-between text-[11px] font-plain text-[#ffffff]/70 uppercase tracking-wider gap-3">
+        <div class="flex items-center space-x-4">
+          <span data-i18n="hero.locationLine">{translations.vi.hero.locationLine}</span>
+        </div>
+
+        <div class="flex items-center space-x-5">
+          <a href="/treatments" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">01. {translations.vi.nav.treatments}</a>
+          <a href="/doctors" data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">02. {translations.vi.nav.specialists}</a>
+          <a href="/clinic" data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">03. {translations.vi.nav.clinic}</a>
+          <a href="/technology" data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">04. {translations.vi.nav.technology}</a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</Layout>
+
+<script>
+  function setupHeroVideo() {
+    const video = document.getElementById('hero-video') as HTMLVideoElement | null;
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        // Safe handling for autoplay prevention (e.g. low power mode)
+        console.info('Autoplay state handled smoothly:', err);
+      });
+    }
+  }
+
+  setupHeroVideo();
+  document.addEventListener('astro:page-load', setupHeroVideo);
+</script>

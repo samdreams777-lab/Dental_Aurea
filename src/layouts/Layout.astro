@@ -1,0 +1,85 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ConsultationModal from '../components/ConsultationModal.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "AUREA — Private Dental & Aesthetic Institute · Da Nang",
+  description = "An international sanctuary of quiet luxury, surgical reconstructive dentistry, and regenerative facial aesthetics along the coast of Da Nang, Vietnam.",
+  image = "/assets/aurea/hero/hero-01.jpg"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://aurea-institute.vn");
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '';
+---
+
+<!doctype html>
+<html lang="vi" class="bg-[#ffffff] text-[#000000] antialiased selection:bg-[#000000] selection:text-[#ffffff]">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical & Primary SEO -->
+    <link rel="canonical" href={canonicalURL} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "AUREA Private Dental & Aesthetic Institute",
+        "description": "Exclusive private dental reconstruction, ceramic smile architecture, and medical facial aesthetics.",
+        "url": "https://aurea-institute.vn",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Son Tra Coastal Promenade",
+          "addressLocality": "Da Nang",
+          "addressCountry": "VN"
+        },
+        "medicalSpecialty": ["Dentistry", "Prosthodontics", "OralSurgery", "Dermatology"],
+        "priceRange": "$$$$"
+      }
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body class={`${isHome ? 'h-screen overflow-hidden' : 'min-h-screen overflow-x-hidden'} flex flex-col justify-between bg-[#ffffff] text-[#000000] antialiased`}>
+    <Header />
+    
+    <main id="main-content" class={`flex-grow ${isHome ? 'overflow-hidden flex flex-col' : ''}`}>
+      <slot />
+    </main>
+
+    {!isHome && <Footer />}
+    <ConsultationModal />
+  </body>
+</html>

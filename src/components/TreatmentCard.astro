@@ -1,0 +1,69 @@
+---
+import { translations } from '../i18n/translations';
+
+interface Props {
+  id?: string;
+  title: string;
+  category: string;
+  tagline: string;
+  heroImage: string;
+  slug: string;
+  indications: string[];
+}
+
+const { id = '', title, category, tagline, heroImage, slug, indications } = Astro.props;
+
+const treatKey = id || slug;
+const treatVi = translations.vi.treatments?.[treatKey as keyof typeof translations.vi.treatments] || { title, category, tagline };
+---
+
+<div class="group flex flex-col justify-between border border-stone-300/80 bg-stone-100/30 hover:border-champagne-500/60 transition-all duration-500 p-6 md:p-8">
+  <div class="space-y-6">
+    <!-- Image with subtle zoom -->
+    <div class="relative aspect-[16/10] overflow-hidden bg-stone-200">
+      <img
+        src={heroImage}
+        alt={title}
+        loading="lazy"
+        class="w-full h-full object-cover img-editorial-scale"
+      />
+      <div data-i18n={`treatments.${treatKey}.category`} class="absolute top-3 left-3 bg-ivory-50/90 backdrop-blur-sm px-3 py-1 text-[9px] uppercase tracking-[0.2em] font-sans text-charcoal-900">
+        {treatVi.category}
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="space-y-2">
+      <h3 data-i18n={`treatments.${treatKey}.title`} class="font-serif text-2xl md:text-3xl text-charcoal-900 group-hover:text-champagne-700 transition-colors font-light">
+        {treatVi.title}
+      </h3>
+      <p data-i18n={`treatments.${treatKey}.tagline`} class="text-xs md:text-sm font-sans text-stone-600 font-light italic">
+        "{treatVi.tagline}"
+      </p>
+    </div>
+
+    <!-- Indications / Highlights -->
+    <div class="pt-2 border-t border-stone-200/60">
+      <div data-i18n="treatments.keyIndications" class="text-[10px] uppercase tracking-widest text-stone-500 mb-2">Chỉ định chính</div>
+      <ul class="space-y-1.5 text-xs text-charcoal-800 font-light">
+        {indications.slice(0, 2).map((item) => (
+          <li class="flex items-start space-x-2">
+            <span class="text-champagne-600 mt-0.5">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Link Action -->
+  <div class="pt-6 mt-6 border-t border-stone-200/60 flex items-center justify-between">
+    <a
+      href={`/treatments/${slug}`}
+      data-i18n="treatments.exploreDetails"
+      class="text-[11px] uppercase tracking-[0.2em] text-charcoal-900 font-sans font-medium flex items-center space-x-2 group-hover:translate-x-1 transition-transform"
+    >
+      <span>{translations.vi.treatments.exploreDetails}</span>
+    </a>
+  </div>
+</div>

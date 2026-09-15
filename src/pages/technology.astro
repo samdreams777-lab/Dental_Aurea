@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { translations } from '../i18n/translations';
+---
+
+<Layout
+  title="Digital Technology & Master Laboratory — AUREA Private Institute"
+  description="Explore the technological infrastructure of AUREA: 3D CBCT imaging, Trios 5 optical scanners, on-site master ceramic atelier, and computer-guided surgery."
+>
+  <section class="py-24 md:py-36 bg-charcoal-950 text-ivory-50 border-b border-charcoal-800">
+    <div class="max-w-7xl mx-auto px-6 md:px-12">
+      <div class="max-w-3xl space-y-6">
+        <div data-i18n="nav.technology" class="text-[10px] uppercase tracking-[0.25em] text-champagne-400 font-sans font-medium">
+          {translations.vi.nav.technology}
+        </div>
+        <h1 data-i18n="hero.headline" class="font-serif text-4xl md:text-6xl text-ivory-50 font-light leading-[1.1]">
+          {translations.vi.hero.headline}
+        </h1>
+        <p data-i18n="hero.subtitle" class="text-sm md:text-base text-stone-400 font-sans font-light leading-relaxed">
+          {translations.vi.hero.subtitle}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Technological Pillars -->
+  <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 space-y-24">
+      
+      <!-- Pillar 1: CBCT -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <div data-i18n="technologyPage.p1Badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+            {translations.vi.technologyPage.p1Badge}
+          </div>
+          <h2 data-i18n="technologyPage.p1Title" class="font-serif text-3xl md:text-4xl text-charcoal-900 font-light">
+            {translations.vi.technologyPage.p1Title}
+          </h2>
+          <p data-i18n="technologyPage.p1Desc" class="text-sm md:text-base text-stone-700 font-light font-sans leading-relaxed">
+            {translations.vi.technologyPage.p1Desc}
+          </p>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
+            <img src="/assets/aurea/technology/tech-diagnostics-display.jpg" alt="3D CBCT Diagnostics" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 2: Trios 5 Scanners -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 lg:order-2 space-y-6">
+          <div data-i18n="technologyPage.p2Badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+            {translations.vi.technologyPage.p2Badge}
+          </div>
+          <h2 data-i18n="technologyPage.p2Title" class="font-serif text-3xl md:text-4xl text-charcoal-900 font-light">
+            {translations.vi.technologyPage.p2Title}
+          </h2>
+          <p data-i18n="technologyPage.p2Desc" class="text-sm md:text-base text-stone-700 font-light font-sans leading-relaxed">
+            {translations.vi.technologyPage.p2Desc}
+          </p>
+        </div>
+        <div class="lg:col-span-6 lg:order-1">
+          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
+            <img src="/assets/aurea/technology/tech-digital-screens.jpg" alt="Trios 5 optical workstation" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Pillar 3: On-Site Master Ceramic Laboratory -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+          <div data-i18n="technologyPage.p3Badge" class="text-[10px] uppercase tracking-[0.25em] text-champagne-600 font-sans font-medium">
+            {translations.vi.technologyPage.p3Badge}
+          </div>
+          <h2 data-i18n="technologyPage.p3Title" class="font-serif text-3xl md:text-4xl text-charcoal-900 font-light">
+            {translations.vi.technologyPage.p3Title}
+          </h2>
+          <p data-i18n="technologyPage.p3Desc" class="text-sm md:text-base text-stone-700 font-light font-sans leading-relaxed">
+            {translations.vi.technologyPage.p3Desc}
+          </p>
+        </div>
+        <div class="lg:col-span-6">
+          <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
+            <img src="/assets/aurea/dentistry/dentistry-ceramic-prep.jpg" alt="Master ceramist layering porcelain" class="w-full h-full object-cover img-editorial-scale" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
