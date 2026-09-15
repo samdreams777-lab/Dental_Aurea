@@ -118,18 +118,32 @@ import { getRelativePath } from '../utils/path';
     const video = document.getElementById('hero-video') as HTMLVideoElement | null;
     if (!video) return;
 
+    // Strict WebKit / iOS Safari property locking
     video.muted = true;
+    video.defaultMuted = true;
     video.playsInline = true;
+    video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
 
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((err) => {
-        // Safe handling for autoplay prevention (e.g. low power mode)
-        console.info('Autoplay state handled smoothly:', err);
-      });
+    function safePlay() {
+      if (!video) return;
+      if (video.paused) {
+        const promise = video.play();
+        if (promise !== undefined) {
+          promise.catch((err) => {
+            console.info('Hero video autoplay state handled:', err);
+          });
+        }
+      }
     }
+
+    // Try playing immediately
+    safePlay();
+
+    // Secondary triggers for WebKit media readiness
+    video.addEventListener('canplay', safePlay, { once: true });
+    video.addEventListener('loadedmetadata', safePlay, { once: true });
   }
 
   setupHeroVideo();

@@ -1,0 +1,72 @@
+---
+import { getRelativePath } from '../utils/path';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUREA Video Diagnostic Test Page</title>
+</head>
+<body style="margin: 0; background: #000; color: #fff; font-family: sans-serif; text-align: center; padding: 20px;">
+  <h1>Hero Video iOS Diagnostic Test</h1>
+  <p>Isolated minimal HTML5 Video test page (No framework transitions, no overlays)</p>
+
+  <div style="max-width: 800px; margin: 20px auto; border: 1px solid #333;">
+    <video
+      id="test-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      webkit-playsinline
+      controls
+      preload="auto"
+      poster={getRelativePath("/assets/aurea/hero/hero-video-poster.jpg")}
+      style="width: 100%; height: auto; display: block;"
+    >
+      <source src={getRelativePath("/assets/aurea/hero/hero-video.mp4")} type="video/mp4">
+      Your browser does not support HTML5 Video.
+    </video>
+  </div>
+
+  <div id="logs" style="max-width: 800px; margin: 20px auto; text-align: left; background: #111; padding: 15px; font-family: monospace; font-size: 12px; white-space: pre-wrap; border: 1px solid #444;">
+    Initializing Media Event Monitor...
+  </div>
+
+  <script>
+    const video = document.getElementById('test-video') as HTMLVideoElement | null;
+    const logs = document.getElementById('logs');
+
+    function log(msg: string) {
+      if (!logs) return;
+      const time = new Date().toISOString().split('T')[1].slice(0, 8);
+      logs.textContent += `\n[${time}] ${msg}`;
+      console.log(`[VideoTest] ${msg}`);
+    }
+
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+
+      const events = ['loadstart', 'loadedmetadata', 'loadeddata', 'canplay', 'canplaythrough', 'playing', 'play', 'pause', 'waiting', 'stalled', 'suspend', 'error', 'emptied', 'abort'];
+      events.forEach(evt => {
+        video.addEventListener(evt, () => {
+          log(`Event: ${evt} | readyState: ${video.readyState} | networkState: ${video.networkState} | currentTime: ${video.currentTime.toFixed(2)}s | paused: ${video.paused}`);
+        });
+      });
+
+      if (video.error) {
+        log(`Initial Video Error: code=${video.error.code}, msg=${video.error.message}`);
+      }
+
+      video.play().then(() => {
+        log('SUCCESS: video.play() resolved successfully');
+      }).catch(err => {
+        log(`REJECTED: video.play() failed: ${err.name} - ${err.message}`);
+      });
+    }
+  </script>
+</body>
+</html>
