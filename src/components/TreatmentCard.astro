@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 
 interface Props {
   id?: string;
@@ -22,7 +23,7 @@ const treatVi = translations.vi.treatments?.[treatKey as keyof typeof translatio
     <!-- Image with subtle zoom -->
     <div class="relative aspect-[16/10] overflow-hidden bg-stone-200">
       <img
-        src={heroImage}
+        src={getRelativePath(heroImage)}
         alt={title}
         loading="lazy"
         class="w-full h-full object-cover img-editorial-scale"
@@ -59,7 +60,7 @@ const treatVi = translations.vi.treatments?.[treatKey as keyof typeof translatio
   <!-- Link Action -->
   <div class="pt-6 mt-6 border-t border-stone-200/60 flex items-center justify-between">
     <a
-      href={`/treatments/${slug}`}
+      href={getRelativePath(`/treatments/${slug}`)}
       data-i18n="treatments.exploreDetails"
       class="text-[11px] uppercase tracking-[0.2em] text-charcoal-900 font-sans font-medium flex items-center space-x-2 group-hover:translate-x-1 transition-transform"
     >

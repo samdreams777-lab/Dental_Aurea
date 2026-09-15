@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 
 interface Props {
   id?: string;
@@ -22,7 +23,7 @@ const docVi = translations.vi.doctors?.[docKey as keyof typeof translations.vi.d
   <!-- Portrait -->
   <div class="relative aspect-[4/5] overflow-hidden bg-stone-200">
     <img
-      src={image}
+      src={getRelativePath(image)}
       alt={name}
       loading="lazy"
       class="w-full h-full object-cover object-top img-editorial-scale"
@@ -54,7 +55,7 @@ const docVi = translations.vi.doctors?.[docKey as keyof typeof translations.vi.d
         <span data-i18n={`doctors.${docKey}.scheduleLimit`}>{docVi.scheduleLimit}</span>
       </div>
       <a
-        href={`/doctors/${slug}`}
+        href={getRelativePath(`/doctors/${slug}`)}
         data-i18n="doctors.viewProfile"
         class="inline-block text-[11px] uppercase tracking-[0.2em] text-charcoal-900 font-sans font-medium hover:text-champagne-600 transition-colors"
       >

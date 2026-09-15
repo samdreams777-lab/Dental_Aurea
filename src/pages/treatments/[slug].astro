@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { treatments, type Treatment } from '../../data/treatments';
 import { doctors } from '../../data/doctors';
 import { translations } from '../../i18n/translations';
+import { getRelativePath } from '../../utils/path';
 
 export function getStaticPaths() {
   return treatments.map((treatment) => ({
@@ -24,13 +25,13 @@ const docVi = doctor ? (translations.vi.doctors?.[doctor.id as keyof typeof tran
 <Layout
   title={`${treatVi.title} — AUREA Private Institute`}
   description={treatVi.overview}
-  image={treatment.heroImage}
+  image={getRelativePath(treatment.heroImage)}
 >
   <!-- 01 HERO -->
   <section class="relative min-h-[65vh] flex items-end pb-20 border-b border-stone-300 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <img
-        src={treatment.heroImage}
+        src={getRelativePath(treatment.heroImage)}
         alt={treatment.title}
         class="w-full h-full object-cover object-center brightness-[0.9] contrast-[1.05]"
       />
@@ -81,7 +82,7 @@ const docVi = doctor ? (translations.vi.doctors?.[doctor.id as keyof typeof tran
               <div data-i18n="doctorsPage.badge" class="text-[10px] uppercase tracking-widest text-stone-500">Chuyên gia Đảm trách</div>
               <div class="flex items-center space-x-4">
                 <img
-                  src={doctor.image}
+                  src={getRelativePath(doctor.image)}
                   alt={doctor.name}
                   class="w-16 h-16 rounded-full object-cover object-top border border-champagne-500/40"
                 />
@@ -91,7 +92,7 @@ const docVi = doctor ? (translations.vi.doctors?.[doctor.id as keyof typeof tran
                 </div>
               </div>
               <a
-                href={`/doctors/${doctor.slug}`}
+                href={getRelativePath(`/doctors/${doctor.slug}`)}
                 data-i18n="doctors.viewProfile"
                 class="inline-block text-xs uppercase tracking-wider text-champagne-700 hover:text-charcoal-900 transition-colors pt-2"
               >

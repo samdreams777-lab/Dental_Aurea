@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { translations } from '../../i18n/translations';
+import { getRelativePath } from '../../utils/path';
 
 const artVi = translations.vi.journal['mathematics-of-natural-harmony'];
 ---
@@ -8,7 +9,7 @@ const artVi = translations.vi.journal['mathematics-of-natural-harmony'];
 <Layout
   title="The Mathematics of Natural Harmony: Golden Ratios vs. Organic Asymmetry — AUREA Journal"
   description="Why the pursuit of mathematical perfection often creates unnatural dental aesthetics, and how master ceramists embrace biological micro-irregularities."
-  image="/assets/aurea/editorial/editorial-shadows.jpg"
+  image={getRelativePath("/assets/aurea/editorial/editorial-shadows.jpg")}
 >
   <article class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
     <div class="max-w-3xl mx-auto px-6 md:px-12 space-y-12">
@@ -29,7 +30,7 @@ const artVi = translations.vi.journal['mathematics-of-natural-harmony'];
       <!-- Lead Image -->
       <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
         <img
-          src="/assets/aurea/editorial/editorial-shadows.jpg"
+          src={getRelativePath("/assets/aurea/editorial/editorial-shadows.jpg")}
           alt="Architectural shadows and light"
           class="w-full h-full object-cover"
         />
@@ -53,7 +54,7 @@ const artVi = translations.vi.journal['mathematics-of-natural-harmony'];
       <!-- Author Bio Footer -->
       <div class="pt-12 border-t border-stone-200 flex items-center space-x-6">
         <img
-          src="/assets/aurea/doctors/dr-elena-vance.jpg"
+          src={getRelativePath("/assets/aurea/doctors/dr-elena-vance.jpg")}
           alt="Dr. Elena Vance"
           class="w-16 h-16 rounded-full object-cover object-top border border-champagne-500/40"
         />

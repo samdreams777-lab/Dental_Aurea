@@ -1,5 +1,6 @@
 ---
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 
 const year = new Date().getFullYear();
 ---
@@ -12,7 +13,7 @@ const year = new Date().getFullYear();
       
       <!-- Brand Wordmark & Monograph Statement -->
       <div class="lg:col-span-4 space-y-4">
-        <a href="/" class="inline-block group">
+        <a href={getRelativePath("/")} class="inline-block group">
           <span class="font-plain text-2xl tracking-[-0.03em] text-[#ffffff] uppercase font-semibold">
             AUREA
           </span>
@@ -37,12 +38,12 @@ const year = new Date().getFullYear();
             {translations.vi.footer.colDisciplines}
           </div>
           <ul class="space-y-2.5 text-[14px] font-plain text-[#b3b3b3]">
-            <li><a href="/treatments/dental-implants" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.treatments}</a></li>
-            <li><a href="/treatments/smile-design" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Kiến Trúc Nụ Cười</a></li>
-            <li><a href="/treatments/veneers" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Veneer Sứ Cao Cấp</a></li>
-            <li><a href="/treatments/full-mouth-rehabilitation" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Tái Cấu Trúc Khớp Cắn</a></li>
-            <li><a href="/treatments/orthodontics" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Chỉnh Nha Vô Hình</a></li>
-            <li><a href="/treatments/aesthetic-medicine" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Thẩm Mỹ Khuôn Mặt</a></li>
+            <li><a href={getRelativePath("/treatments/dental-implants")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.treatments}</a></li>
+            <li><a href={getRelativePath("/treatments/smile-design")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Kiến Trúc Nụ Cười</a></li>
+            <li><a href={getRelativePath("/treatments/veneers")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Veneer Sứ Cao Cấp</a></li>
+            <li><a href={getRelativePath("/treatments/full-mouth-rehabilitation")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Tái Cấu Trúc Khớp Cắn</a></li>
+            <li><a href={getRelativePath("/treatments/orthodontics")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Chỉnh Nha Vô Hình</a></li>
+            <li><a href={getRelativePath("/treatments/aesthetic-medicine")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">Thẩm Mỹ Khuôn Mặt</a></li>
           </ul>
         </div>
 
@@ -52,12 +53,12 @@ const year = new Date().getFullYear();
             {translations.vi.footer.colInstitute}
           </div>
           <ul class="space-y-2.5 text-[14px] font-plain text-[#b3b3b3]">
-            <li><a href="/doctors" data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.specialists}</a></li>
-            <li><a href="/clinic" data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.clinic}</a></li>
-            <li><a href="/technology" data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.technology}</a></li>
-            <li><a href="/patient-journey" data-i18n="nav.protocol" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.protocol}</a></li>
-            <li><a href="/results" data-i18n="nav.results" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.results}</a></li>
-            <li><a href="/journal" data-i18n="nav.journal" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.journal}</a></li>
+            <li><a href={getRelativePath("/doctors")} data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.specialists}</a></li>
+            <li><a href={getRelativePath("/clinic")} data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.clinic}</a></li>
+            <li><a href={getRelativePath("/technology")} data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.technology}</a></li>
+            <li><a href={getRelativePath("/patient-journey")} data-i18n="nav.protocol" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.protocol}</a></li>
+            <li><a href={getRelativePath("/results")} data-i18n="nav.results" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.results}</a></li>
+            <li><a href={getRelativePath("/journal")} data-i18n="nav.journal" class="hover:text-[#ffffff] transition-colors underline decoration-[#27272a] hover:decoration-[#ffffff]">{translations.vi.nav.journal}</a></li>
           </ul>
         </div>
 

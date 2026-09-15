@@ -1,17 +1,22 @@
 ---
 import { translations } from '../i18n/translations';
+import { isHomePage, getRelativePath } from '../utils/path';
 
 const pathname = new URL(Astro.request.url).pathname;
-const isHome = pathname === '/' || pathname === '';
+const isHome = isHomePage(pathname);
+const homeUrl = getRelativePath("/");
 
 const navKeys = [
-  { key: "treatments", href: "/treatments" },
-  { key: "specialists", href: "/doctors" },
-  { key: "clinic", href: "/clinic" },
-  { key: "technology", href: "/technology" },
-  { key: "results", href: "/results" },
-  { key: "journal", href: "/journal" },
+  { key: "treatments", href: getRelativePath("/treatments") },
+  { key: "specialists", href: getRelativePath("/doctors") },
+  { key: "clinic", href: getRelativePath("/clinic") },
+  { key: "technology", href: getRelativePath("/technology") },
+  { key: "results", href: getRelativePath("/results") },
+  { key: "journal", href: getRelativePath("/journal") },
 ];
+
+const normPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+const normHome = homeUrl.endsWith('/') && homeUrl.length > 1 ? homeUrl.slice(0, -1) : homeUrl;
 ---
 
 <header
@@ -26,7 +31,7 @@ const navKeys = [
   <div class="max-w-[1440px] mx-auto px-6 md:px-12 h-16 md:h-20 flex items-center justify-between">
     
     <!-- Brand Wordmark (Plain geometric sans weight 600) -->
-    <a href="/" class="group flex items-baseline space-x-3 transition-opacity hover:opacity-80">
+    <a href={homeUrl} class="group flex items-baseline space-x-3 transition-opacity hover:opacity-80">
       <span class={`font-plain text-xl md:text-2xl font-semibold tracking-[-0.03em] uppercase ${isHome ? 'text-[#ffffff]' : 'text-[#000000]'}`}>
         AUREA
       </span>
@@ -42,7 +47,8 @@ const navKeys = [
     <!-- Desktop Navigation (Plain 15px with 1px hairline underline) -->
     <nav class={`hidden lg:flex items-center space-x-8 text-[15px] font-plain ${isHome ? 'text-[#ffffff]' : 'text-[#000000]'}`}>
       {navKeys.map((item) => {
-        const isActive = pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href));
+        const normHref = item.href.endsWith('/') && item.href.length > 1 ? item.href.slice(0, -1) : item.href;
+        const isActive = normPath === normHref || (normHref !== normHome && normPath.startsWith(normHref));
         return (
           <a
             href={item.href}

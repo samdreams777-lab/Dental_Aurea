@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 ---
 
 <Layout
@@ -42,7 +43,7 @@ import { translations } from '../i18n/translations';
         </div>
         <div class="lg:col-span-6">
           <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
-            <img src="/assets/aurea/technology/tech-diagnostics-display.jpg" alt="3D CBCT Diagnostics" class="w-full h-full object-cover img-editorial-scale" />
+            <img src={getRelativePath("/assets/aurea/technology/tech-diagnostics-display.jpg")} alt="3D CBCT Diagnostics" class="w-full h-full object-cover img-editorial-scale" />
           </div>
         </div>
       </div>
@@ -62,7 +63,7 @@ import { translations } from '../i18n/translations';
         </div>
         <div class="lg:col-span-6 lg:order-1">
           <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
-            <img src="/assets/aurea/technology/tech-digital-screens.jpg" alt="Trios 5 optical workstation" class="w-full h-full object-cover img-editorial-scale" />
+            <img src={getRelativePath("/assets/aurea/technology/tech-digital-screens.jpg")} alt="Trios 5 optical workstation" class="w-full h-full object-cover img-editorial-scale" />
           </div>
         </div>
       </div>
@@ -82,7 +83,7 @@ import { translations } from '../i18n/translations';
         </div>
         <div class="lg:col-span-6">
           <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 border border-stone-300">
-            <img src="/assets/aurea/dentistry/dentistry-ceramic-prep.jpg" alt="Master ceramist layering porcelain" class="w-full h-full object-cover img-editorial-scale" />
+            <img src={getRelativePath("/assets/aurea/dentistry/dentistry-ceramic-prep.jpg")} alt="Master ceramist layering porcelain" class="w-full h-full object-cover img-editorial-scale" />
           </div>
         </div>
       </div>

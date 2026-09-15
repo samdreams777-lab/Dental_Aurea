@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { journalArticles } from '../../data/cases';
 import { translations } from '../../i18n/translations';
+import { getRelativePath } from '../../utils/path';
 ---
 
 <Layout
@@ -31,12 +32,12 @@ import { translations } from '../../i18n/translations';
           const artVi = translations.vi.journal?.[article.slug as keyof typeof translations.vi.journal] || article;
           return (
             <a
-              href={`/journal/${article.slug}`}
+              href={getRelativePath(`/journal/${article.slug}`)}
               class="group flex flex-col border border-stone-300 bg-ivory-50 p-6 hover:border-champagne-500/60 transition-all duration-300"
             >
               <div class="relative aspect-[16/10] overflow-hidden bg-stone-200 mb-6">
                 <img
-                  src={article.image}
+                  src={getRelativePath(article.image)}
                   alt={article.title}
                   loading="lazy"
                   class="w-full h-full object-cover img-editorial-scale"

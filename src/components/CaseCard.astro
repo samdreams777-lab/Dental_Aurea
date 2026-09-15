@@ -1,6 +1,7 @@
 ---
 import type { ClinicalCase } from '../data/cases';
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 
 interface Props {
   caseStudy: ClinicalCase;
@@ -16,7 +17,7 @@ const caseVi = translations.vi.cases?.[caseStudy.id as keyof typeof translations
     <!-- Image visual -->
     <div class="md:col-span-5 relative aspect-[4/3] md:aspect-auto overflow-hidden bg-stone-200">
       <img
-        src={caseStudy.leadImage}
+        src={getRelativePath(caseStudy.leadImage)}
         alt={caseStudy.title}
         loading="lazy"
         class="w-full h-full object-cover img-editorial-scale"

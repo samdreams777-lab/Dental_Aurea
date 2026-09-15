@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { doctors, type Doctor } from '../../data/doctors';
 import { translations } from '../../i18n/translations';
+import { getRelativePath } from '../../utils/path';
 
 export function getStaticPaths() {
   return doctors.map((doctor) => ({
@@ -21,7 +22,7 @@ const docVi = translations.vi.doctors?.[doctor.id as keyof typeof translations.v
 <Layout
   title={`${doctor.name} — ${docVi.role}`}
   description={docVi.bio}
-  image={doctor.image}
+  image={getRelativePath(doctor.image)}
 >
   <!-- Hero / Introduction -->
   <section class="py-24 md:py-36 bg-ivory-50 border-b border-stone-300">
@@ -32,7 +33,7 @@ const docVi = translations.vi.doctors?.[doctor.id as keyof typeof translations.v
         <div class="lg:col-span-5 space-y-6">
           <div class="relative aspect-[4/5] overflow-hidden bg-stone-200 border border-stone-300">
             <img
-              src={doctor.image}
+              src={getRelativePath(doctor.image)}
               alt={doctor.name}
               class="w-full h-full object-cover object-top"
             />

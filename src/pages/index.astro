@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { translations } from '../i18n/translations';
+import { getRelativePath } from '../utils/path';
 ---
 
 <Layout
@@ -20,13 +21,13 @@ import { translations } from '../i18n/translations';
         playsinline
         webkit-playsinline
         preload="auto"
-        poster="/assets/aurea/hero/hero-video-poster.jpg"
+        poster={getRelativePath("/assets/aurea/hero/hero-video-poster.jpg")}
         class="w-full h-full object-cover object-[center_30%]"
       >
-        <source src="/assets/aurea/hero/hero-video.mp4" type="video/mp4" />
+        <source src={getRelativePath("/assets/aurea/hero/hero-video.mp4")} type="video/mp4" />
         <!-- Fallback static image -->
         <img
-          src="/assets/aurea/hero/hero-video-poster.jpg"
+          src={getRelativePath("/assets/aurea/hero/hero-video-poster.jpg")}
           alt="AUREA Radiant Smile Health and Confidence"
           class="w-full h-full object-cover object-[center_30%]"
         />
@@ -85,7 +86,7 @@ import { translations } from '../i18n/translations';
         </button>
 
         <a
-          href="/clinic"
+          href={getRelativePath("/clinic")}
           data-i18n="hero.ctaSecondary"
           class="text-[14px] font-plain text-[#ffffff]/80 hover:text-[#ffffff] underline decoration-[#ffffff]/40 hover:decoration-[#ffffff] transition-colors"
         >
@@ -100,10 +101,10 @@ import { translations } from '../i18n/translations';
         </div>
 
         <div class="flex items-center space-x-5">
-          <a href="/treatments" data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">01. {translations.vi.nav.treatments}</a>
-          <a href="/doctors" data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">02. {translations.vi.nav.specialists}</a>
-          <a href="/clinic" data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">03. {translations.vi.nav.clinic}</a>
-          <a href="/technology" data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">04. {translations.vi.nav.technology}</a>
+          <a href={getRelativePath("/treatments")} data-i18n="nav.treatments" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">01. {translations.vi.nav.treatments}</a>
+          <a href={getRelativePath("/doctors")} data-i18n="nav.specialists" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">02. {translations.vi.nav.specialists}</a>
+          <a href={getRelativePath("/clinic")} data-i18n="nav.clinic" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">03. {translations.vi.nav.clinic}</a>
+          <a href={getRelativePath("/technology")} data-i18n="nav.technology" class="hover:text-[#ffffff] transition-colors underline decoration-[#ffffff]/30 hover:decoration-[#ffffff]">04. {translations.vi.nav.technology}</a>
         </div>
       </div>
 
