@@ -1,5 +1,5 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+// import { ClientRouter } from 'astro:transitions'; // DIAGNOSTIC: temporarily disabled
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ConsultationModal from '../components/ConsultationModal.astro';
@@ -73,7 +73,7 @@ const faviconUrl = getRelativePath("/favicon.svg");
       }
     </script>
 
-    <ClientRouter />
+    {/* <ClientRouter /> */}{/* DIAGNOSTIC: temporarily disabled */}
   </head>
   <body class={`${isHome ? 'h-screen overflow-hidden' : 'min-h-screen overflow-x-hidden'} flex flex-col justify-between bg-[#ffffff] text-[#000000] antialiased`}>
     <Header />
